@@ -280,6 +280,7 @@ class SetupCallback(Callback):
         if not self.debug and trainer.global_rank == 0:
             rank_zero_print("Summoning checkpoint.")
             ckpt_path = os.path.join(self.ckptdir, "last.ckpt")
+            print('save model at', ckpt_path)
             trainer.save_checkpoint(ckpt_path)
 
     def on_pretrain_routine_start(self, trainer, pl_module):
@@ -885,6 +886,7 @@ if __name__ == "__main__":
             if trainer.global_rank == 0:
                 rank_zero_print("Summoning checkpoint.")
                 ckpt_path = os.path.join(ckptdir, "last.ckpt")
+                print('save model at', ckpt_path)
                 trainer.save_checkpoint(ckpt_path)
 
 
